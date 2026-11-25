@@ -24,7 +24,7 @@ export const ItemListContainer = () => {
   }, [category]);
 
   const filteredProducts = products.filter((prod) =>
-    prod.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    prod.nombre?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
