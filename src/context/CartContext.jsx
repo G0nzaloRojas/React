@@ -2,9 +2,7 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const CartContext = createContext();
-
 
 export const useCart = () => {
   const context = useContext(CartContext);
@@ -15,16 +13,18 @@ export const useCart = () => {
   return context;
 };
 
-
 export const CartProvider = ({ children }) => {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
 
   const isInCart = (item) => {
+    if (!item?.id) return false;
     return cart.some((element) => element.id === item.id);
   };
 
   const addItem = (item) => {
+    if (!item || !item.id) return;
+
     if (isInCart(item)) {
       alert("El producto ya existe en el carrito");
       return;
@@ -33,24 +33,18 @@ export const CartProvider = ({ children }) => {
     alert("Producto agregado al carrito 🎉");
   };
 
-
   const removeItem = (id) => {
     setCart((prev) => prev.filter((element) => element.id !== id));
-
     alert("Producto eliminado ✅");
-
   };
-
 
   const clearCart = () => {
     setCart([]);
   };
 
-
   const getTotalItems = () => {
     return cart.length;
   };
-
 
   const getCartTotal = () => {
     return cart.reduce((acc, element) => {
@@ -58,7 +52,6 @@ export const CartProvider = ({ children }) => {
       return acc + valor;
     }, 0);
   };
-
 
   const checkout = () => {
     alert("Su compra ha sido realizada 🎉");

@@ -18,6 +18,9 @@ export const Nav = () => {
             {totalItems > 0 && <span className="incart">{totalItems}</span>}
           </Link>
         </li>
+        <li>
+          <Link to={"/admin/login"}>Admin</Link>
+        </li>
       </ul>
     </nav>
   );

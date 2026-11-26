@@ -11,7 +11,6 @@ import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { PublicLayout } from "./layouts/PublicLayout";
 import { AdminLayout } from "./layouts/AdminLayout";
 
-// Ajustá estas 3 rutas si los guardaste directo en adminComponents sin subcarpeta
 import { Dashboard } from "./components/adminComponents/Dashboard";
 import { ProductFormContainer } from "./components/adminComponents/ProductFormContainer";
 import { ProductSuccess } from "./components/adminComponents/ProductSuccess";
@@ -22,20 +21,18 @@ function App() {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       <Routes>
-        {/* ---------------------- RUTAS PUBLICAS ------------------------- */}
+        {/* Rutas Públicas */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<ItemListContainer />} />
-
           <Route path="/category/:category" element={<ItemListContainer />} />
-
           <Route path="/product/:id" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<CartView />} />
         </Route>
 
-        {/* Login por fuera de AdminLayout para acceder si no estamos logueados */}
+        {/* Login de Administrador */}
         <Route path="/admin/login" element={<Login />} />
 
-        {/* ----------------------------- ADMIN --------------------------- */}
+        {/* Rutas Privadas (Panel Admin) */}
         <Route
           path="/admin"
           element={
@@ -51,7 +48,6 @@ function App() {
           <Route path="products/success/:id" element={<ProductSuccess />} />
         </Route>
 
-        {/* Redirección por defecto si ingresan a una ruta inexistente */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
