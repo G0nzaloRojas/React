@@ -71,14 +71,19 @@ export const ProductFormContainer = () => {
     };
 
     try {
+      let productId = id;
+
       if (isEditing) {
         await updateProduct(id, payload);
         toast.success("Producto actualizado con éxito");
       } else {
-        await createProduct(payload);
+        productId = await createProduct(payload);
         toast.success("Producto creado con éxito");
       }
-      navigate("/admin/products/success", { state: { isEditing, nombre: payload.nombre } });
+
+      navigate(`/admin/products/success/${productId}`, {
+        state: { isEditing, nombre: payload.nombre },
+      });
     } catch (err) {
       console.error(err);
       setError("Ocurrió un error al guardar el producto.");
