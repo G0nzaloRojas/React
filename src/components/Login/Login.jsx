@@ -66,6 +66,7 @@ export const Login = () => {
             variant="primary"
             type="submit"
             className="w-100"
+            style={{ marginLeft: 0 }}
             disabled={loading}
             aria-label="Ingresar al panel de administración"
           >

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Table, Button, Spinner, Alert, Badge } from "react-bootstrap";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { getProducts, deleteProduct } from "../../services/productService";
+import { getProducts, deleteProduct } from "../../../services/productService";
+import "./Dashboard.css";
 
 export const Dashboard = () => {
   const [products, setProducts] = useState([]);
@@ -73,11 +74,13 @@ export const Dashboard = () => {
             {products.map((prod) => (
               <tr key={prod.id} className="align-middle">
                 <td>
-                  <img
-                    src={prod.imagen}
-                    alt={prod.nombre}
-                    style={{ width: "55px", height: "55px", objectFit: "cover", borderRadius: "6px" }}
-                  />
+                  {prod.imagen && (
+                    <img
+                      src={prod.imagen}
+                      alt={prod.nombre}
+                      className="dashboard-img"
+                    />
+                  )}
                 </td>
                 <td className="fw-semibold">{prod.nombre}</td>
                 <td>

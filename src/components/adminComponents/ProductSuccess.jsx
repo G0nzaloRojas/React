@@ -1,6 +1,7 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Card, Button, Badge } from "react-bootstrap";
 import { FaCheckCircle, FaList, FaPlus } from "react-icons/fa";
+import "./ProductSuccess.css";
 
 export const ProductSuccess = () => {
   const { id } = useParams();
@@ -8,7 +9,7 @@ export const ProductSuccess = () => {
   const { isEditing, nombre } = location.state || {};
 
   return (
-    <Card className="p-5 text-center shadow-sm mx-auto" style={{ maxWidth: "500px" }}>
+    <Card className="p-5 text-center shadow-sm product-success-card">
       <FaCheckCircle size={55} className="text-success mx-auto mb-3" />
       <h3>{isEditing ? "¡Producto actualizado!" : "¡Producto creado con éxito!"}</h3>
       <p className="text-muted mb-2">

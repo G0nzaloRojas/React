@@ -11,8 +11,8 @@ import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { PublicLayout } from "./layouts/PublicLayout";
 import { AdminLayout } from "./layouts/AdminLayout";
 
-import { Dashboard } from "./components/adminComponents/Dashboard";
-import { ProductFormContainer } from "./components/adminComponents/ProductFormContainer";
+import { Dashboard } from "./components/adminComponents/Dashboard/Dashboard";
+import { ProductFormContainer } from "./components/adminComponents/ProductForm/ProductFormContainer";
 import { ProductSuccess } from "./components/adminComponents/ProductSuccess";
 
 function App() {
