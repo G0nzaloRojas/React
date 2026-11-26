@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Alert, Button } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
-import { toast } from "react-toastify";
 import { useCart } from "../../context/CartContext";
 import { CartList } from "./CartList";
 import { CartSummary } from "./CartSummary";
 import "./Cart.css";
 
 export const CartView = () => {
-  const { cart, clearCart, removeItem, total } = useCart();
-
-  const handleCheckout = () => {
-    toast.success("¡Compra realizada con éxito! Muchas gracias.");
-    clearCart();
-  };
+  const { cart, clearCart, removeItem, getCartTotal, checkout } = useCart();
 
   if (!cart || cart.length === 0) {
     return (
@@ -38,9 +32,9 @@ export const CartView = () => {
         </Col>
         <Col lg={4}>
           <CartSummary
-            total={total}
+            total={getCartTotal}
             onClear={clearCart}
-            onCheckout={handleCheckout}
+            onCheckout={checkout}
           />
         </Col>
       </Row>

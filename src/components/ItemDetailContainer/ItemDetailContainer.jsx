@@ -39,7 +39,7 @@ export const ItemDetailContainer = () => {
             <title>Mi Tienda | {product.nombre}</title>
             <meta name="description" content={`Detalles y precio de ${product.nombre}`} />
           </Helmet>
-          <ItemDetail product={product} />
+          <ItemDetail item={product} />
         </>
       ) : (
         <Alert variant="warning">No se encontró el producto.</Alert>
