@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Card, Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { FaSave, FaArrowLeft } from "react-icons/fa";
 import "./ProductFormContainer.css";
 
@@ -12,12 +12,14 @@ export const ProductFormUI = ({
   onSubmit,
 }) => {
   return (
-    <Card className="p-4 shadow-sm product-form-card">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3>{isEditing ? "Editar Producto" : "Crear Nuevo Producto"}</h3>
-        <Button as={Link} to="/admin/dashboard" variant="outline-secondary" size="sm">
-          <FaArrowLeft className="me-1" /> Volver
-        </Button>
+    <section className="dashboard" style={{ maxWidth: "680px" }}>
+      <div className="dashboard-header">
+        <h2>{isEditing ? "Editar Producto" : "Nuevo Producto"}</h2>
+        <div className="header-actions">
+          <Link to="/admin/dashboard" className="btn btn-secondary">
+            <FaArrowLeft className="me-1" /> Volver
+          </Link>
+        </div>
       </div>
 
       {error && <Alert variant="danger">{error}</Alert>}
@@ -93,11 +95,17 @@ export const ProductFormUI = ({
           />
         </Form.Group>
 
-        <Button type="submit" variant="primary" className="w-100" disabled={submitting}>
+        <Button
+          type="submit"
+          variant="primary"
+          className="w-100"
+          style={{ marginLeft: 0 }}
+          disabled={submitting}
+        >
           <FaSave className="me-1" />
           {submitting ? "Guardando..." : isEditing ? "Guardar Cambios" : "Crear Producto"}
         </Button>
       </Form>
-    </Card>
+    </section>
   );
 };
