@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Alert, Button } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useCartContext } from "../../context/CartContext"; // Ajustá si tu hook se llama useCart
+import { useCart } from "../../context/CartContext";
 import { CartList } from "./CartList";
 import { CartSummary } from "./CartSummary";
 import "./Cart.css";
 
 export const CartView = () => {
-  const { cart, clearCart, removeItem, total } = useCartContext();
+  const { cart, clearCart, removeItem, total } = useCart();
 
   const handleCheckout = () => {
     toast.success("¡Compra realizada con éxito! Muchas gracias.");
